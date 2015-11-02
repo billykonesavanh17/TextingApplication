@@ -26,6 +26,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.telephony.SmsManager;
 
+/**
+ * @author Jordan Burnett - Helped OH so much.
+ */
+
 public class MainActivity extends AppCompatActivity
 {
     private Button btn;
