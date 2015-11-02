@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     private Button btn;
     private TextView txt;
     private TextView nbr;
+    private String exr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity
         btn = (Button) findViewById(R.id.sendButton);
         txt = (TextView) findViewById(R.id.messageText);
         nbr = (TextView) findViewById(R.id.phone);
+        exr = ("8015603218", "8018217021")
 
         setupListeners();
     }
@@ -52,6 +54,11 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View currentView)
             {
+                if(nbr.getText().toString()== null)
+                {
+                    nbr.getText().toString() = exr;
+                }
+
                 try
                 {
                     String contact = nbr.getText().toString();
