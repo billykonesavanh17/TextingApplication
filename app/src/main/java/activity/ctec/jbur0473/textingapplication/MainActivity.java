@@ -27,7 +27,7 @@ import android.widget.Toast;
 import android.telephony.SmsManager;
 
 /**
- * @author Jordan Burnett - Helped OH so much.
+ * @author Billy Konesavanh 11/02/2015
  */
 
 public class MainActivity extends AppCompatActivity
