@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.telephony.SmsManager;
+import java.util.ArrayList;
 
 /**
  * @author Jordan Burnett - Helped OH so much.
@@ -35,7 +36,9 @@ public class MainActivity extends AppCompatActivity
     private Button btn;
     private TextView txt;
     private TextView nbr;
-    private String exr;
+    private ArrayList<String> randomMessage;
+    private ArrayList<String> randomNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,9 +49,55 @@ public class MainActivity extends AppCompatActivity
         btn = (Button) findViewById(R.id.sendButton);
         txt = (TextView) findViewById(R.id.messageText);
         nbr = (TextView) findViewById(R.id.phone);
-        exr = ("8015603218", "8018217021")
-
+        this.randomMessage = new ArrayList<String>();
+        this.randomNumber = new ArrayList<String>();
         setupListeners();
+        makeRandom();
+    }
+
+    public void makeRandom()
+    {
+        this.randomMessage.add("The vacuum bag sure is hot today!");
+        this.randomMessage.add("What would you say if I was right outside your bedroom window right now?  (Go look).");
+        this.randomMessage.add("Knowing that one day the mouse might find a way to heat up the spaghetti fills you with determination.");
+        this.randomMessage.add("How do you feel right now? Remember, this is for prosperity, so be honest.");
+        this.randomMessage.add("Knowing people die if they are killed fills you with determination!");
+        this.randomMessage.add("One of these days you're going to wake up dead.");
+        this.randomMessage.add("Not the bees! Not the bees!");
+        this.randomMessage.add("Hey, listen!");
+        this.randomMessage.add("The probability of Princess Zelda being in this area is 85%.");
+        this.randomMessage.add("It's time to kick butt and chew bubble gum. And I'm fresh out of bubble gum.");
+        this.randomMessage.add("Never, under any circumstance, take a sleeping pill and a laxative on the same night.");
+        this.randomMessage.add("The shinbone is a device for finding furniture in a dark room.");
+        this.randomMessage.add("Politicians and diapers have one thing in common. They should both be changed regularly, and for the same reason.");
+        this.randomMessage.add("Vote for nobody, because nobody cares.");
+        this.randomMessage.add("Don't worry about what people think, because they don't do it very often.");
+        this.randomMessage.add("Heroism is the only way to be famous when we have no talent.");
+        this.randomMessage.add("The enemy is stupid: he believes that the enemy is us, even though it's him!");
+        this.randomMessage.add("Everything happens for a reason. But sometimes the reason is that you're stupid and you make bad decisions.");
+
+        this.randomNumber.add("8015603218");
+        this.randomNumber.add("8018217021");
+    }
+
+    private String getRandomPhrase()
+    {
+        String randomPhrase = "";
+
+        int randomSpot = (int) (Math.random() * randomMessage.size());
+        randomPhrase = randomMessage.get(randomSpot);
+
+        return randomPhrase;
+    }
+
+    private String getBlankNumber()
+    {
+        String blankNumber = "";
+
+        int randomNumberSpot = (int) (Math.random() * randomNumber.size());
+        blankNumber = randomNumber.get(randomNumberSpot);
+
+        return blankNumber;
     }
 
     private void setupListeners()
@@ -58,9 +107,14 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View currentView)
             {
-                if(nbr.getText().toString()== null)
+                if(nbr.getText().toString()== "")
                 {
-                    nbr.getText().toString() = exr;
+                    nbr.setText(getBlankNumber());
+                }
+
+                if(txt.getText().toString()== "")
+                {
+                    txt.setText(getRandomPhrase());
                 }
 
                 try
